@@ -113,7 +113,7 @@ public class ActivitiApplicationTests {
         //根据流程key和任务的负责人查询任务并选择其中的一个任务处理
         Task task = taskService.createTaskQuery()
                 .processDefinitionKey("Process1") //流程Key
-                .taskAssignee("hefy")  //要查询的负责人
+                .taskAssignee("liuky")  //要查询的负责人
                 .singleResult();
 
         //完成任务,参数：任务id
