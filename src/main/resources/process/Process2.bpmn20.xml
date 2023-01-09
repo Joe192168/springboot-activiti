@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/Process2def">
+  <process id="Process2" isExecutable="true">
+    <startEvent id="sid-39CE715B-65E4-45C8-B3BA-8C262A5CF901">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.joe.activiti.service.MyExecutionListener">
+          <activiti:field name="fixedValue">
+            <activiti:expression><![CDATA[开始节点]]></activiti:expression>
+          </activiti:field>
+          <activiti:field name="dynamicValue">
+            <activiti:expression><![CDATA[${dynamicValue}]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
+      </extensionElements>
+    </startEvent>
+    <endEvent id="sid-3226EC63-6A6B-4005-970B-EDFA7EABB604"></endEvent>
+    <sequenceFlow id="sid-E62345AD-AFD9-49B4-AD14-9854F8FEECD1" sourceRef="sid-39CE715B-65E4-45C8-B3BA-8C262A5CF901" targetRef="sid-3226EC63-6A6B-4005-970B-EDFA7EABB604"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Process2">
+    <bpmndi:BPMNPlane bpmnElement="Process2" id="BPMNPlane_Process2">
+      <bpmndi:BPMNShape bpmnElement="sid-39CE715B-65E4-45C8-B3BA-8C262A5CF901" id="BPMNShape_sid-39CE715B-65E4-45C8-B3BA-8C262A5CF901">
+        <omgdc:Bounds height="30.0" width="30.0" x="180.0" y="100.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-3226EC63-6A6B-4005-970B-EDFA7EABB604" id="BPMNShape_sid-3226EC63-6A6B-4005-970B-EDFA7EABB604">
+        <omgdc:Bounds height="28.0" width="28.0" x="255.0" y="101.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-E62345AD-AFD9-49B4-AD14-9854F8FEECD1" id="BPMNEdge_sid-E62345AD-AFD9-49B4-AD14-9854F8FEECD1">
+        <omgdi:waypoint x="210.0" y="115.0"></omgdi:waypoint>
+        <omgdi:waypoint x="255.0" y="115.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

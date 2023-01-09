@@ -1,5 +1,6 @@
 package com.joe.activiti;
 
+import com.joe.activiti.service.MyExecutionListener2;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
@@ -18,7 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -46,8 +49,16 @@ public class ActivitiApplicationTests {
 
         //使用RepositoryService进行部署
         DeploymentBuilder builder = repositoryService.createDeployment();
-        builder.addClasspathResource("process/Process1.bpmn20.xml");
-        builder.addClasspathResource("process/Process1.png");
+
+        /*builder.addClasspathResource("process/Process1.bpmn20.xml");
+        builder.addClasspathResource("process/Process1.png");*/
+
+        /*builder.addClasspathResource("process/Process2.bpmn20.xml");
+        builder.addClasspathResource("process/Process2.png");*/
+
+        builder.addClasspathResource("process/Process3.bpmn20.xml");
+        builder.addClasspathResource("process/Process3.png");
+
         builder.name("first_activiti_process");
         Deployment deployment = builder.deploy();
 
@@ -63,8 +74,17 @@ public class ActivitiApplicationTests {
     //1.流程实例启动
     @Test
     public void testStartProcess(){
+
+        Map variableMap = new HashMap();
+        //第一种方式传参数
+        //variableMap.put("dynamicValue","开始启动");
+
+        //第二种
+        variableMap.put("MyExecutionListener2",new MyExecutionListener2());
+
         //根据流程定义Id启动流程
-        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("Process1");
+        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("Process3",variableMap);
+        System.out.println("流程实例启动成功");
 
         //输出实例信息
         System.out.println("流程定义id：" + processInstance.getProcessDefinitionId());
